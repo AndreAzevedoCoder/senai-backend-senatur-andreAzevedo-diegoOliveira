@@ -13,45 +13,45 @@ namespace Senai.Senatur.WebApi.Controllers
     [Route("api/[controller]")]
 
     [ApiController]
-    public class PacotesController : ControllerBase
+    public class UsuariosController : ControllerBase
     {
-        private IPacotesRepository _pacotesRepository { get; set; }
+        private IUsuariosRepository _usuarioRepository { get; set; }
 
-        public PacotesController()
+        public UsuariosController()
         {
-            _pacotesRepository = new PacoteRepository();
+            _usuarioRepository = new UsuarioRepository();
         }
 
         [HttpGet]
         public IActionResult ListarTodos()
         {
-            return StatusCode(200, _pacotesRepository.Listar());
+            return StatusCode(200, _usuarioRepository.Listar());
         }
 
         [HttpGet("{id}")]
         public IActionResult ListarTodos(int id)
         {
-            return StatusCode(200, _pacotesRepository.BuscarPorID(id));
+            return StatusCode(200, _usuarioRepository.BuscarPorID(id));
         }
 
         [HttpPost]
-        public IActionResult Cadastrar(Pacotes pacote)
+        public IActionResult Cadastrar(Usuarios usuario)
         {
-            _pacotesRepository.Cadastrar(pacote);
+            _usuarioRepository.Cadastrar(usuario);
             return StatusCode(200);
         }
 
         [HttpPut("{id}")]
-        public IActionResult Atualizar(int id, Pacotes pacote)
+        public IActionResult Atualizar(int id, Usuarios usuario)
         {
-            _pacotesRepository.Atualizar(id,pacote);
+            _usuarioRepository.Atualizar(id,usuario);
             return StatusCode(200);
         }
 
         [HttpDelete("{id}")]
         public IActionResult Deletar(int id)
         {
-            _pacotesRepository.Deletar(id);
+            _usuarioRepository.Deletar(id);
             return StatusCode(200);
         }
 

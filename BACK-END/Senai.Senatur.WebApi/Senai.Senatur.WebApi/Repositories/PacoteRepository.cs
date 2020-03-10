@@ -10,7 +10,8 @@ namespace Senai.Senatur.WebApi.Repositories
         SenaturContext ctx = new SenaturContext();
 
         //GET
-        public List<PacoteDomain> Listar(){
+        public List<PacoteDomain> Listar()
+        {
 
             return ctx.Pacotes.ToList();
         }

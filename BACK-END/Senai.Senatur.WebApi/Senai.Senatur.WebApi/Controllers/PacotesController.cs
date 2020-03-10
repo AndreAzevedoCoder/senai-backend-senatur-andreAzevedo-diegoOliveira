@@ -4,6 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Senai.Senatur.WebApi.Domains;
+using Senai.Senatur.WebApi.Interfaces;
+using Senai.Senatur.WebApi.Repositories;
 
 namespace Senai.Senatur.WebApi.Controllers
 {
@@ -16,7 +19,7 @@ namespace Senai.Senatur.WebApi.Controllers
 
         public PacotesController()
         {
-            _pacotesRepository = new PacotesRepository();
+            _pacotesRepository = new PacoteRepository();
         }
 
         [HttpGet]
@@ -32,9 +35,25 @@ namespace Senai.Senatur.WebApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult Cadastrar(PacoteDomain pacote)
+        public IActionResult Cadastrar(Pacotes pacote)
         {
-            return StatusCode(200, _pacotesRepository.Cadastrar(pacote));
+            _pacotesRepository.Cadastrar(pacote);
+            return StatusCode(200);
         }
+
+        [HttpPut("{id}")]
+        public IActionResult Atualizar(int id, Pacotes pacote)
+        {
+            _pacotesRepository.Atualizar(id,pacote);
+            return StatusCode(200);
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Deletar(int id)
+        {
+            _pacotesRepository.Deletar(id);
+            return StatusCode(200);
+        }
+
     }
 }

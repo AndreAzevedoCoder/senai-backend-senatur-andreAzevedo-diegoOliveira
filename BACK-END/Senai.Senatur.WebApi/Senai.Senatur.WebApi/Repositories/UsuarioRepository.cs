@@ -39,9 +39,22 @@ namespace Senai.Senatur.WebApi.Repositories
         }
 
         //PUT
-        public void Atualizar(int id, Pacotes pacoteAtualizado)
+        public void Atualizar(int id, Usuarios usuarioAtualizado)
         {
-            
+            Usuarios usuario = BuscarPorID(id);
+
+            if (usuarioAtualizado.Email != null)
+            {
+                usuario.Email = usuarioAtualizado.Email;
+            }
+            else if (usuarioAtualizado.IdTipoUsuario != null)
+            {
+                usuario.IdTipoUsuario = usuarioAtualizado.IdTipoUsuario;
+            }
+            else if (usuarioAtualizado.Senha != null)
+            {
+                usuario.Senha = usuarioAtualizado.Senha;
+            }
         }
 
         //LOGIN

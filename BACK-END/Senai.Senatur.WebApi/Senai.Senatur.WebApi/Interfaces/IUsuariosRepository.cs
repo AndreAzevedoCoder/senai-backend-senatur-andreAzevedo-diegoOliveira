@@ -12,6 +12,8 @@ namespace Senai.Senatur.WebApi.Interfaces
 
         Usuarios BuscarPorID(int id);
 
+        Usuarios BuscarPorEmailSenha(string email, string senha);
+
         void Cadastrar(Usuarios pacote);
 
         void Deletar(int id);

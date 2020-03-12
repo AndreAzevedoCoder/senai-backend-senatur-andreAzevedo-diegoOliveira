@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Senai.Senatur.WebApi.Domains;
 using Senai.Senatur.WebApi.Interfaces;
@@ -13,7 +14,6 @@ namespace Senai.Senatur.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [Produces("application/json")]
-
     [ApiController]
     public class TiposUsuarioController : ControllerBase
     {
@@ -24,18 +24,21 @@ namespace Senai.Senatur.WebApi.Controllers
             _tipoUsuarioRepository = new TipoUsuarioRepository();
         }
 
+        [Authorize(Roles = "1")]
         [HttpGet]
         public IActionResult Get()
         {
             return StatusCode(200, _tipoUsuarioRepository.Listar());
         }
 
+        [Authorize(Roles = "1")]
         [HttpGet("{Id}")]
         public IActionResult GetById(int Id)
         {
             return StatusCode(200, _tipoUsuarioRepository.BuscarPorID(Id));
         }
 
+        [Authorize(Roles = "1")]
         [HttpPost]
         public IActionResult Post(TiposUsuario novoTipo)
         {
@@ -43,6 +46,7 @@ namespace Senai.Senatur.WebApi.Controllers
             return StatusCode(201);
         }
 
+        [Authorize(Roles = "1")]
         [HttpDelete("{Id}")]
         public IActionResult Delete(int Id)
         {
@@ -50,6 +54,7 @@ namespace Senai.Senatur.WebApi.Controllers
             return StatusCode(204);
         }
 
+        [Authorize(Roles = "1")]
         [HttpPut]
         public IActionResult Put(int Id,TiposUsuario tipoAtualizado)
         {

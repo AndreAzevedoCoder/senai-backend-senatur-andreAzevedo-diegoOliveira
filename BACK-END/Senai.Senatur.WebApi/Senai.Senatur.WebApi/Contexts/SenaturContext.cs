@@ -23,7 +23,8 @@ namespace Senai.Senatur.WebApi.Domains
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source=DEV16\\SQLEXPRESS; Initial Catalog=Senatur_Manha; user Id=sa; pwd=sa@132;");
+                //optionsBuilder.UseSqlServer("Data Source=DEV16\\SQLEXPRESS; Initial Catalog=Senatur_Manha; user Id=sa; pwd=sa@132;");
+                optionsBuilder.UseSqlServer("Data source=VELSTADT\\SQLEXPRESS; Initial Catalog=Senatur_Manha; integrated security=true;");
             }
         }
 
